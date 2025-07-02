@@ -1,0 +1,219 @@
+variables:
+  CI_TAGS: docker
+  WORK_DIR: "container"
+  WIKI_PROJECT_NAME: ""
+
+stages:
+  - test-py39
+  - test-py310
+  - test-py311
+  - coverage
+
+
+test-py39-modules-job:
+  stage: test-py39
+  image: python:3.9
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py39-module
+
+test-py39-flake8-job:
+  stage: test-py39
+  image: python:3.9
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py39-flake8
+
+test-py39-ruff-job:
+  stage: test-py39
+  image: python:3.9
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py39-ruff
+
+test-py39-lizard-job:
+  stage: test-py39
+  image: python:3.9
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py39-lizard
+
+test-py39-mypy-job:
+  stage: test-py39
+  image: python:3.9
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py39-mypy
+
+test-py310-modules-job:
+  stage: test-py310
+  image: python:3.10
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py310-module
+
+test-py310-flake8-job:
+  stage: test-py310
+  image: python:3.10
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py310-flake8
+
+
+test-py310-ruff-job:
+  stage: test-py310
+  image: python:3.10
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py310-ruff
+
+
+test-py310-lizard-job:
+  stage: test-py310
+  image: python:3.10
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py310-lizard
+
+
+test-py310-mypy-job:
+  stage: test-py310
+  image: python:3.10
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py310-mypy
+
+test-py311-modules-job:
+  stage: test-py311
+  image: python:3.11
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py311-module
+
+test-py311-flake8-job:
+  stage: test-py311
+  image: python:3.11
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py311-flake8
+
+test-py311-ruff-job:
+  stage: test-py311
+  image: python:3.11
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py311-ruff
+
+test-py311-lizard-job:
+  stage: test-py311
+  image: python:3.11
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py311-lizard
+
+test-py311-mypy-job:
+  stage: test-py311
+  image: python:3.11
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py311-mypy
+
+coverage-job:
+  stage: coverage
+  image: python:3.10
+  tags:
+    - ${CI_TAGS}
+  before_script:
+    - cd ${WORK_DIR}
+    - cp pip.conf /etc/pip.conf
+    - pip install tox
+  script:
+    - tox -e py310-module
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: container/coverage.xml
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^test/'
+      when: always
+    - if: '$CI_COMMIT_BRANCH =~ /^refactor/'
+      when: always
+    - if: '$CI_COMMIT_BRANCH =~ $CI_DEFAULT_BRANCH'
+      when: always

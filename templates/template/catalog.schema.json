@@ -1,0 +1,97 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "template_registration_common_scatterplot",
+    "type": "object",
+    "required": [
+        "catalog"
+    ],
+    "description": "None",
+    "properties": {
+        "catalog": {
+            "type": "object",
+            "label": {
+                "ja": "テンプレート登録_散布図",
+                "en": "template_registration_common_scatterplot"
+            },
+            "required": [],
+            "properties": {
+                "dataset_title": {
+                    "label": {
+                        "ja": "データセット名",
+                        "en": "Dataset Title"
+                    },
+                    "type": "string"
+                },
+                "abstract": {
+                    "label": {
+                        "ja": "概要",
+                        "en": "Abstract"
+                    },
+                    "type": "string"
+                },
+                "data_creator": {
+                    "label": {
+                        "ja": "作成者",
+                        "en": "Data Creator"
+                    },
+                    "type": "string"
+                },
+                "language": {
+                    "label": {
+                        "ja": "言語",
+                        "en": "Language"
+                    },
+                    "type": "string"
+                },
+                "experimental_apparatus": {
+                    "label": {
+                        "ja": "使用装置",
+                        "en": "Experimental Apparatus"
+                    },
+                    "type": "string"
+                },
+                "data_distributio": {
+                    "label": {
+                        "ja": "データの再配布",
+                        "en": "Data Distributio"
+                    },
+                    "type": "string"
+                },
+                "raw_data_type": {
+                    "label": {
+                        "ja": "データの種類",
+                        "en": "Raw Data Type"
+                    },
+                    "type": "string"
+                },
+                "stored_data": {
+                    "label": {
+                        "ja": "格納データ",
+                        "en": "Stored Data"
+                    },
+                    "type": "string",
+                    "options": {
+                        "rows": 5
+                    }
+                },
+                "remarks": {
+                    "label": {
+                        "ja": "備考",
+                        "en": "Remarks"
+                    },
+                    "type": "string",
+                    "options": {
+                        "rows": 5
+                    }
+                },
+                "references": {
+                    "label": {
+                        "ja": "参考論文",
+                        "en": "References"
+                    },
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,156 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "template_registration_common_scatterplot",
+    "description": "None",
+    "type": "object",
+    "required": [
+        "custom",
+        "sample"
+    ],
+    "properties": {
+        "custom": {
+            "type": "object",
+            "label": {
+                "ja": "固有情報",
+                "en": "Custom Information"
+            },
+            "required": [],
+            "properties": {
+                "measurement_data_start_character": {
+                    "label": {
+                        "ja": "計測データ開始文字列",
+                        "en": "Measurement Data Start Character"
+                    },
+                    "type": "string",
+                    "description": "計測データ開始行となる文字列を記載",
+                    "options": {
+                        "placeholder": {
+                            "ja": "計測データ開始キーワードを入力",
+                            "en": "Enter the keyword that marks the start of measurement data"
+                        }
+                    }
+                },
+                "x-axis_column_index": {
+                    "label": {
+                        "ja": "x軸列番号",
+                        "en": "x-axis column index"
+                    },
+                    "type": "number",
+                    "options": {
+                        "placeholder": {
+                            "ja": "x軸プロットデータの列番号(1始まり)を入力してください。",
+                            "en": "Please enter the column number for the x-axis plot data (starting from 1)"
+                        }
+                    },
+                    "minimum": 1.0
+                },
+                "y-axis_column_index": {
+                    "label": {
+                        "ja": "y軸列番号",
+                        "en": "y-axis column index"
+                    },
+                    "type": "number",
+                    "options": {
+                        "placeholder": {
+                            "ja": "y軸プロットデータの列番号(1始まり)を入力してください。",
+                            "en": "Please enter the column number for the y-axis plot data (starting from 1)"
+                        }
+                    },
+                    "minimum": 1.0
+                },
+                "xaxis_label_name": {
+                    "label": {
+                        "ja": "x軸ラベル名",
+                        "en": "xaxis label name"
+                    },
+                    "type": "string"
+                },
+                "yaxis_label_name": {
+                    "label": {
+                        "ja": "y軸ラベル名",
+                        "en": "yaxis label name"
+                    },
+                    "type": "string"
+                },
+                "key1": {
+                    "label": {
+                        "ja": "キー1",
+                        "en": "key1"
+                    },
+                    "type": "string"
+                },
+                "key2": {
+                    "label": {
+                        "ja": "キー2",
+                        "en": "key2"
+                    },
+                    "type": "string"
+                },
+                "key3": {
+                    "label": {
+                        "ja": "キー3",
+                        "en": "key3"
+                    },
+                    "type": "string"
+                },
+                "key4": {
+                    "label": {
+                        "ja": "キー4",
+                        "en": "key4"
+                    },
+                    "type": "string"
+                },
+                "key5": {
+                    "label": {
+                        "ja": "キー5",
+                        "en": "key5"
+                    },
+                    "type": "string"
+                },
+                "key6": {
+                    "label": {
+                        "ja": "キー6",
+                        "en": "key6"
+                    },
+                    "type": "string"
+                },
+                "key7": {
+                    "label": {
+                        "ja": "キー7",
+                        "en": "key7"
+                    },
+                    "type": "string"
+                },
+                "key8": {
+                    "label": {
+                        "ja": "キー8",
+                        "en": "key8"
+                    },
+                    "type": "string"
+                },
+                "key9": {
+                    "label": {
+                        "ja": "キー9",
+                        "en": "key9"
+                    },
+                    "type": "string"
+                },
+                "key10": {
+                    "label": {
+                        "ja": "キー10",
+                        "en": "key10"
+                    },
+                    "type": "string"
+                }
+            }
+        },
+        "sample": {
+            "type": "object",
+            "label": {
+                "ja": "試料情報",
+                "en": "Sample Information"
+            },
+            "properties": {}
+        }
+    }
+}

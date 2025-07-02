@@ -1,0 +1,39 @@
+{
+    "datasetId": "1s1199df4-0d1v-41b0-1dea-23bf4dh09g12",
+    "basic": {
+        "dateSubmitted": "",
+        "dataOwnerId": "0c233ef274f28e611de4074638b4dc43e737ab993132343532343430",
+        "dataName": "test-scatter-plot-dataset",
+        "instrumentId": null,
+        "experimentId": null,
+        "description": ""
+    },
+    "custom": {
+        "measurement_data_start_character": "",
+        "x-axis_column_index": 1,
+        "y-axis_column_index": 2,
+        "xaxis_label_name": "test-xラベル",
+        "yaxis_label_name": "test-yラベル",
+        "key1": null,
+        "key2": null,
+        "key3": null,
+        "key4": null,
+        "key5": null,
+        "key6": null,
+        "key7": null,
+        "key8": null,
+        "key9": null,
+        "key10": null
+    },
+    "sample": {
+        "sampleId": null,
+        "names": [
+            "test1"
+        ],
+        "composition": null,
+        "referenceUrl": null,
+        "description": null,
+        "generalAttributes": [],
+        "ownerId": "de17c7b3f0ff5126831c2d519f481055ba466ddb6238666132316439"
+    }
+}
