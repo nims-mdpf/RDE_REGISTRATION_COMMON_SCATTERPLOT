@@ -1,4 +1,4 @@
-from rdetoolkit.exceptions import catch_exception_with_message
+from rdetoolkit.errors import catch_exception_with_message
 from rdetoolkit.models.rde2types import RdeInputDirPaths, RdeOutputResourcePath
 from rdetoolkit.rde2util import Meta
 
@@ -30,14 +30,25 @@ class CustomProcessingCoordinator:
         structured_processer (StructuredDataProcessor): The component for processing structured data.
 
     Example:
-        custom_module = CustomProcessingCoordinator(FileReader(), MetaParser(), GraphPlotter(), StructuredDataProcessor())
+        custom_module = CustomProcessingCoordinator(
+        FileReader(),
+        MetaParser(),
+        GraphPlotter(),
+        StructuredDataProcessor()
+        )
         # Note: The method 'execute_processing' hasn't been defined in the provided code,
         #       so its usage is just an example here.
         custom_module.execute_processing(srcpaths, resource_paths)
 
     """
 
-    def __init__(self, file_reader: FileReader, meta_parser: MetaParser, graph_plotter: GraphPlotter, structured_processer: StructuredDataProcessor) -> None:
+    def __init__(
+            self,
+            file_reader: FileReader,
+            meta_parser: MetaParser,
+            graph_plotter: GraphPlotter,
+            structured_processer: StructuredDataProcessor,
+    ) -> None:
         """Initialize the coordinator with the specified components."""
         self.file_reader = file_reader
         self.meta_parser = meta_parser
@@ -53,7 +64,8 @@ def scatterplot_module(srcpaths: RdeInputDirPaths, resource_paths: RdeOutputReso
         resource_paths (RdeOutputResourcePath): Paths to the output directories for saving processed files.
 
     This function performs the following steps:
-    1. Initializes the processing module with custom components for reading files, parsing metadata, plotting graphs, and processing structured data.
+    1. Initializes the processing module with custom components for reading files, parsing metadata, plotting graphs,
+    and processing structured data.
     2. Retrieves user-defined graph options from the invoice JSON file.
     3. Reads the input data file and extracts metadata and data.
     4. Saves the data to CSV files, including a subset of columns specified by the user.
@@ -68,7 +80,9 @@ def scatterplot_module(srcpaths: RdeInputDirPaths, resource_paths: RdeOutputReso
     invoice_json = get_invoice_obj(srcpaths.invoice.joinpath("invoice.json"))
     invoice_json.to_json(srcpaths.invoice.joinpath("invoice.json"))
     user_graph_options = module.graph_plotter.create_options(invoice_json)
-    user_setting_header = [user_graph_options.xlabel, user_graph_options.ylabel] if user_graph_options.xlabel and user_graph_options.ylabel else None
+    user_setting_header = [
+        user_graph_options.xlabel, user_graph_options.ylabel,
+    ] if user_graph_options.xlabel and user_graph_options.ylabel else None
     basename = resource_paths.rawfiles[0].stem
 
     # -- Read Input File --
@@ -87,7 +101,8 @@ def scatterplot_module(srcpaths: RdeInputDirPaths, resource_paths: RdeOutputReso
 
     # -- Save meta data --
     module.meta_parser.parse(meta, srcpaths.tasksupport.joinpath("metadata-def.json"))
-    module.meta_parser.save_meta(resource_paths.meta.joinpath("metadata.json"), Meta(srcpaths.tasksupport.joinpath("metadata-def.json")))
+    module.meta_parser.save_meta(resource_paths.meta.joinpath("metadata.json"),
+                                 Meta(srcpaths.tasksupport.joinpath("metadata-def.json")))
 
     # -- Plot a graph and Save Figure --
     module.graph_plotter.plot(

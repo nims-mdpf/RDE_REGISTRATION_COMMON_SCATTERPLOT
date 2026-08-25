@@ -1,6 +1,7 @@
 [project]
 name = "Scatter Plot DatasetTeamplate"
-version = "1.0.0"
+version = "1.1.0"
+requires-python =">=3.12,<3.13"
 
 [tool.flake8]
 max-line-length = 250
@@ -61,7 +62,7 @@ exclude_also = [
 ]
 
 [tool.ruff]
-line-length = 1000
+line-length = 120
 select = [
     "F",    # pyflakes
     "E",    # pycodestyle

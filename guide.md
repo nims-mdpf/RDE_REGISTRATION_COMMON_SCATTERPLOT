@@ -15,11 +15,11 @@
 ### テンプレート情報
 
 * DT0006:
-  * 【データセットテンプレートID】NIMS_DT0006_SCATTERPLOT_REGISTRATION_v1.0
+  * 【データセットテンプレートID】NIMS_DT0006_SCATTERPLOT_REGISTRATION_v1.1
   * 【データセットテンプレート名日本語】散布図プロットデータセットテンプレート
   * 【データセットテンプレート名英語】scatter plot dataset template
   * 【データセットテンプレートの説明】入力されたテキストファイルから散布図を作成
-* 【バージョン】1.0
+* 【バージョン】1.1
 * 【データセット種別】その他
 * 【データ構造化】あり (システム上「あり」を選択)
 * 【取り扱い事業】NIMS研究および共同研究プロジェクト (PROGRAM)
@@ -111,8 +111,8 @@ simple_registration
 
 ### 動作環境
 
-- Python: 3.11, 3.10, 3.9
-- RDEToolKit: 1.0.1
+- Python: 3.12
+- RDEToolKit: 1.7.1
 
 ### 動作環境ファイル入出力
 

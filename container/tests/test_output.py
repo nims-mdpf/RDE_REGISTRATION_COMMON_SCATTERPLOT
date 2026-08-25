@@ -199,3 +199,37 @@ class TestOutputCase5:
 
     def test_metadata(self, data_path):
         assert os.path.exists(os.path.join(data_path, "meta", "metadata.json"))
+
+
+class TestOutputCase6:
+    """case6
+    pattern6の入出力テスト
+    入力ファイル: pattern6/inputdata/sample-data.txtを参照
+    """
+
+    inputdata: Union[str, list[str]] = "pattern6/inputdata/scatter_test_1.txt"
+    invoice: str = "pattern6/invoice/invoice.json"
+    metadata_def_json = str = "pattern6/tasksupport/metadata-def.json"
+
+    def test_setup(self):
+        setup_inputdata_folder(self.inputdata)
+        setup_invoice_file(self.invoice)
+        setup_file("tasksupport", self.metadata_def_json)
+
+    @pytest.mark.parametrize("raw_data", ["scatter_test_1.txt"])
+    def test_raw_data(self, setup_main, data_path, raw_data):
+        assert os.path.exists(os.path.join(data_path, "raw", raw_data))
+
+    @pytest.mark.parametrize("img_name", ["scatter_test_1.png"])
+    def test_main_image(self, data_path, img_name):
+        assert os.path.exists(os.path.join(data_path, "main_image", img_name))
+
+    @pytest.mark.parametrize("csv_name", ["data.csv", "header.csv"])
+    def test_structured(self, data_path, csv_name):
+        assert os.path.exists(os.path.join(data_path, "structured", csv_name))
+
+    def test_thumbnail(self, data_path):
+        assert os.path.exists(os.path.join(data_path, "thumbnail", "scatter_test_1.png"))
+
+    def test_metadata(self, data_path):
+        assert os.path.exists(os.path.join(data_path, "meta", "metadata.json"))

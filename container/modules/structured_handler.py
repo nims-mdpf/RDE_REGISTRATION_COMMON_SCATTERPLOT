@@ -36,7 +36,8 @@ class StructuredDataProcessor(IStructuredDataProcessor):
         Args:
             dataframe (pd.DataFrame): The DataFrame to be saved.
             save_path (Path): The path where the CSV file will be saved.
-            header (Optional[list[str]], optional): The list of column names to be used as the header in the CSV file. Defaults to None.
+            header (Optional[list[str]], optional): The list of column names to be used as the header in the CSV file.
+            Defaults to None.
 
         Returns:
             None

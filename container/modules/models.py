@@ -25,7 +25,7 @@ class ChildItem(BaseModel):
     description: str | None = Field(default=None)
     uri: str | None = Field(default=None)
     mode: str | None = Field(default=None)
-    order: str | int = Field(default=None)
+    order: str | int | None = Field(default=None)
     original_name: str | None = Field(default=None, alias="originalName")
 
 

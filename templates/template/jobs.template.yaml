@@ -5,7 +5,7 @@ job_specifications:
     max_task_retries: 0
     tasks:
       - id: task_1
-        docker_image: nims_common_scatterplot_registration:v1.0.0
+        docker_image: rdecontreg.azurecr.io/nims_common_scatterplot_registration:v1.1.0
         command: python /app/main.py
         input_data:
           azure_storage:

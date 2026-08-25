@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Generic, TypeVar
+from typing import TypeVar
 
 import pandas as pd
 from rdetoolkit.models.rde2types import MetaType, RepeatedMetaType
@@ -54,7 +54,7 @@ class IStructuredDataProcessor(ABC):
         raise NotImplementedError
 
 
-class IMetaParser(Generic[T], ABC):
+class IMetaParser[T](ABC):
     """Abstract base class (interface) for meta information parsers.
 
     This interface defines the contract that meta information parser
@@ -75,13 +75,18 @@ class IMetaParser(Generic[T], ABC):
 
     @abstractmethod
     def save_meta(
-        self, save_path: Path, meta: Meta, *, const_meta_info: MetaType | None = None, repeated_meta_info: RepeatedMetaType | None = None,
+        self,
+        save_path: Path,
+        meta: Meta,
+        *,
+        const_meta_info: MetaType | None = None,
+        repeated_meta_info: RepeatedMetaType | None = None,
     ) -> None:
         """Save the constant and repeated meta information to a specified path."""
         raise NotImplementedError
 
 
-class IGraphPlotter(Generic[T], ABC):
+class IGraphPlotter[T](ABC):
     """Abstract base class (interface) for graph plotting implementations.
 
     This interface defines the contract that graph plotting
@@ -94,6 +99,14 @@ class IGraphPlotter(Generic[T], ABC):
     """
 
     @abstractmethod
-    def plot(self, data: T, save_path: Path, *, title: str | None = None, xlabel: str | None = None, ylabel: str | None = None) -> None:
+    def plot(
+        self,
+        data: T,
+        save_path: Path,
+        *,
+        title: str | None = None,
+        xlabel: str | None = None,
+        ylabel: str | None = None,
+    ) -> None:
         """Plot a simple graph using the provided pandas DataFrame."""
         raise NotImplementedError
