@@ -1,3 +1,4 @@
-save_raw: true
-magic_variable: false
-save_thumbnail_image: true
+system:
+    save_raw: true
+    magic_variable: false
+    save_thumbnail_image: true

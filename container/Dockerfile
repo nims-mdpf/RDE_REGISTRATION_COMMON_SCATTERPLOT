@@ -1,6 +1,5 @@
-# Python Verison: 3.11
-# python 3.11.9-slim-bookworm for linux/amd64
-FROM python@sha256:aad3c9cb248194ddd1b98860c2bf41ea7239c384ed51829cf38dcb3569deb7f1
+## Python Version: 3.12
+FROM python:3.12-slim-trixie
 
 # appディレクトリを作成し、作業ディレクトリを指定
 WORKDIR /app

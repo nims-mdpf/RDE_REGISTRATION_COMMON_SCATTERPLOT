@@ -3,8 +3,8 @@ from __future__ import annotations
 import re
 import statistics
 from collections import Counter
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 import pandas as pd
 from rdetoolkit.exceptions import StructuredError
@@ -17,7 +17,7 @@ class FileOperator:
         self.file_path = file_path
 
     def read(self) -> list[str]:
-        """Read the content of a text file and return it as a list of strings, with each string representing a line from the file.
+        """Read a text file and return its lines as a list.
 
         Returns:
             list[str]: A list of strings, each representing a line from the file.
@@ -90,7 +90,13 @@ class HeaderParser:
         for i, line in enumerate(data):
             if self.__is_comment_or_empty(line):
                 continue
-            if self.is_mesurement_start(line) or (self.user_mesurement_start_number and i == self.user_mesurement_start_number):
+            if (
+                self.is_mesurement_start(line)
+                or (
+                    self.user_mesurement_start_number
+                    and i == self.user_mesurement_start_number
+                )
+            ):
                 self.end_line = i
                 break
             if self.__is_header_char(line):
@@ -256,7 +262,8 @@ class DataParser:
 
         Returns:
             A tuple containing the header and measurements.
-            - The header is a list of tuples, where each tuple contains two strings representing the column name and data type.
+            - The header is a list of tuples,
+            where each tuple contains two strings representing the column name and data type.
             - The measurements is a pandas DataFrame containing the parsed data.
 
         """
@@ -348,7 +355,11 @@ class FileReader:
 
         contents = read_from_json_file(invoice_json)
         mesurement_start_char = contents.get("custom", {}).get("measurement_data_start_character", None)
-        number = self.__find_line_number_with_target_char(str(input_file_path), mesurement_start_char) if mesurement_start_char else None
+        number = (
+            self.__find_line_number_with_target_char(
+                str(input_file_path), mesurement_start_char,
+            ) if mesurement_start_char else None
+        )
         self.user_mesurement_start_number = int(number) if number is not None else None
         return self.user_mesurement_start_number
 

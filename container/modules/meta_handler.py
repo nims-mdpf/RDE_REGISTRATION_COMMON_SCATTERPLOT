@@ -24,7 +24,7 @@ class MetaParser:
     """
 
     def parse(self, data: list[tuple[str, str]], metadata_def_path: Path) -> tuple[MetaType, RepeatedMetaType | None]:
-        """Parse the given data dictionary and return a tuple containing the constant meta information and the optional repeated meta information.
+        """Parse data and return constant and optional repeated meta information.
 
         Args:
             data (list[tuple[str, str]]): The list of tuples containing metadata key-value pairs to be parsed.
@@ -33,7 +33,8 @@ class MetaParser:
             This file contains the metadata definitions used for parsing.
 
         Returns:
-            tuple[MetaType, RepeatedMetaType | None]: A tuple containing the constant meta information and the optional repeated meta information.
+            tuple[MetaType, RepeatedMetaType | None]:
+            A tuple containing the constant meta information and the optional repeated meta information.
 
         """
         _meta: dict = {}
@@ -76,7 +77,7 @@ class MetaParser:
 
         metaobj.assign_vals(_const_meta_info)
 
-        return cast(rde2util.Meta, metaobj.writefile(save_path))
+        return cast(rde2util.Meta, metaobj.writefile(str(save_path)))
 
 
 def get_invoice_obj(path: str | Path) -> InvoiceJson:

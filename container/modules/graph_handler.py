@@ -56,7 +56,8 @@ class GraphPlotter:
         """Plot the data and save the plot to the specified path.
 
         Args:
-            data (pd.DataFrame): The data to be plotted. The first column is used for the x-axis and the second column for the y-axis.
+            data (pd.DataFrame): The data to be plotted. The first column is used for the x-axis and
+            the second column for the y-axis.
             save_path (Path): The path where the plot image will be saved.
             title (str | None, optional): The title of the plot  . Defaults to None.
             xlabel (str | None, optional): The label for the x-axis. Defaults to None.
@@ -66,7 +67,11 @@ class GraphPlotter:
         """
         _select_x_col_num = option.x_col_num if option.x_col_num else 0
         _select_y_col_num = option.y_col_num if option.y_col_num else 1
-        new_df = data if _select_x_col_num == 0 and _select_y_col_num == 1 else data.iloc[:, [_select_x_col_num, _select_y_col_num]]
+        new_df = (
+            data
+            if _select_x_col_num == 0 and _select_y_col_num == 1
+            else data.iloc[:, [_select_x_col_num, _select_y_col_num]]
+        )
         fig, ax = plt.subplots(figsize=(6.4, 4.8), dpi=100)
         ax.scatter(new_df.iloc[:, 0], new_df.iloc[:, 1])
 
@@ -104,11 +109,14 @@ class GraphPlotter:
             invoice_obj (InvoiceJson): The invoice object containing the data for creating graph options.
 
         Returns:
-            GraphOptions: An object containing graph configuration options such as x-axis label, y-axis label, x-axis column index, and y-axis column index.
+            GraphOptions: An object containing graph configuration options such as x-axis label, y-axis label,
+            x-axis column index, and y-axis column index.
 
         Notes:
-            - Exception handling is not required because the x-axis and y-axis label names are mandatory in the JSON file.
-            - If the x-axis or y-axis column index is not specified in the JSON file, default values of 0 and 1 are used respectively.
+            - Exception handling is not required because the x-axis and
+            y-axis label names are mandatory in the JSON file.
+            - If the x-axis or y-axis column index is not specified in the JSON file,
+            default values of 0 and 1 are used respectively.
 
         """
         # x_col_num = invoice_obj.custom.x_axis_column_index if invoice_obj.custom.x_axis_column_index else 0
